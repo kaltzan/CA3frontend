@@ -18,7 +18,15 @@ loggedIn = () => {
 }
 logout = () => {
   localStorage.removeItem("jwtToken");
+  
 }
+
+login = (user, pass) => {
+  const options = this.makeOptions("POST", true,{ username: user, password: pass });
+  return fetch(URL + "/api/login", options, true)
+    .then(handleHttpErrors)
+    .then(res => { this.setToken(res.token) })
+  }
 
 class ApiFacade {
  makeOptions(method,addToken,body) {
