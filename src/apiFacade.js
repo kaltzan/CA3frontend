@@ -6,6 +6,19 @@ function handleHttpErrors(res) {
  }
  return res.json();
 }
+setToken = (token) => {
+  localStorage.setItem('jwtToken', token)
+}
+getToken = () => {
+  return localStorage.getItem('jwtToken')
+}
+loggedIn = () => {
+  const loggedIn = this.getToken() != null;
+  return loggedIn;
+}
+logout = () => {
+  localStorage.removeItem("jwtToken");
+}
 
 class ApiFacade {
  makeOptions(method,addToken,body) {
