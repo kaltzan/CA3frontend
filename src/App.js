@@ -25,10 +25,12 @@ class LogIn extends Component {
     )
   }
 }
+
+
 class LoggedIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { dataFromServer: "Fetching!!" };
+    this.state = { dataFromServer: this.props.user };
   }
   componentDidMount() {
     facade.fetchData().then(res => this.setState({ dataFromServer: res }));
@@ -42,6 +44,8 @@ class LoggedIn extends Component {
     )
   }
 }
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -53,14 +57,14 @@ class App extends Component {
   }
   login = (user, pass) => {
     facade.login(user, pass)
-      .then(res => this.setState({ loggedIn: true }));
+      .then(res => this.setState({ loggedIn: true, user }));
   }
   render() {
     return (
       <div>
         {!this.state.loggedIn ? (<LogIn login={this.login} />) :
           (<div>
-            <LoggedIn />
+            <LoggedIn user ={this.state.user}/>
             <button onClick={this.logout}>Logout</button>
           </div>)}
       </div>
