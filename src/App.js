@@ -1,5 +1,35 @@
 import React, { Component } from "react"
 import facade from "./apiFacade";
+import { HashRouter as Router, Route, NavLink as Link, Switch } from "react-router-dom";
+import Navigation from "./Navigation.js";
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loggedIn: false }
+  }
+  logout = () => {
+    facade.logout();
+    this.setState({ loggedIn: false });
+  }
+  login = (user, pass) => {
+    facade.login(user, pass)
+      .then(res => this.setState({ loggedIn: true }));
+  }
+  render() {
+    return (
+      <div>
+        {!this.state.loggedIn ? (<LogIn login={this.login} />) :
+          (<div>
+            <LoggedIn />
+            <button onClick={this.logout}>Logout</button>
+          </div>)}
+      </div>
+    )
+  }
+}
+
 class LogIn extends Component {
   constructor(props) {
     super(props);
@@ -40,33 +70,6 @@ class LoggedIn extends Component {
       <div>
         <h2>Data Received from server</h2>
         <h3>{this.state.dataFromServer}</h3>
-      </div>
-    )
-  }
-}
-
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loggedIn: false }
-  }
-  logout = () => {
-    facade.logout();
-    this.setState({ loggedIn: false });
-  }
-  login = (user, pass) => {
-    facade.login(user, pass)
-      .then(res => this.setState({ loggedIn: true, user }));
-  }
-  render() {
-    return (
-      <div>
-        {!this.state.loggedIn ? (<LogIn login={this.login} />) :
-          (<div>
-            <LoggedIn user ={this.state.user}/>
-            <button onClick={this.logout}>Logout</button>
-          </div>)}
       </div>
     )
   }
