@@ -72,9 +72,4 @@ class LoggedIn extends Component {
     )
   }
 }
-
-
-
-
-
 export default App; 
