@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import facade from "./apiFacade";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, NavLink as Link, Switch } from "react-router-dom";
 
 
 class App extends Component {
@@ -78,7 +78,7 @@ class LoggedIn extends Component {
 function Menu() {
   return (
     <Router>
-      <Switch>
+      <div>
         <ul className="header">
           <li>
             <Link to="/">Home</Link>
@@ -92,11 +92,12 @@ function Menu() {
         </ul>
 
         <hr />
-
+        <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
-      </Switch>
+        </Switch>
+        </div>
     </Router>
   );
 }
