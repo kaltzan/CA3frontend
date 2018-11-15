@@ -81,7 +81,7 @@ function Menu() {
       <div>
         <ul className="header">
           <li>
-            <Link to="/">Home</Link>
+            <Link exact to="/">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
