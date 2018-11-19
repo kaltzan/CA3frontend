@@ -34,6 +34,9 @@ const Navigation = () => {
             <li>
               <Link to="/login">Login</Link>
             </li>
+            <li>
+              <Link to="/swapi">Swapi</Link>
+            </li>
           </ul>
           <hr />
           </div>

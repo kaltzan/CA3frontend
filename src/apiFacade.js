@@ -35,6 +35,12 @@ class ApiFacade {
     const options = this.makeOptions("GET", true); //True add's the token
     return fetch(URL + "/api/info/user", options).then(handleHttpErrors);
   }
+
+  fetchSwapi = () => {
+    const options = this.makeOptions("GET", true);
+    return  fetch(URL + "/api/info/swapi/1", options).then(handleHttpErrors).then(res => res);
+  }
+
   makeOptions(method, addToken, body) {
     var opts = {
       method: method,

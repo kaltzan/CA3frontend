@@ -5,6 +5,7 @@ import App from "./App.js";
 import Home from "./Home.js";
 import About from "./About.js";
 import Topics from "./Topics.js";
+import Swapi from "./Swapi.js";
 
 export default class Router extends Component {
     render() {
@@ -17,6 +18,7 @@ export default class Router extends Component {
                             <Route path="/about" component={About} />
                             <Route path="/topics" component={Topics} />
                             <Route path="/login" component={App} />
+                            <Route path="/swapi" component={Swapi} />
                         </Switch>
                     </div>
             </HashRouter>
