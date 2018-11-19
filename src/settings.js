@@ -1,3 +1,3 @@
 
-const endpoint = "http://localhost:8084/jwtbackend";
+const endpoint = "https://stevenkhuu.com/ca3";
 export default endpoint;
